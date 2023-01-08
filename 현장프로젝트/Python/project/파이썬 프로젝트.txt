@@ -1,0 +1,260 @@
+//*[@id="region_filter"]/div/div/div[3]/ul/li[1]/a
+
+#region_filter > div > a > span.area.type_complex
+
+#region_filter > div > div > div.area_list_wrap.add_button > ul > li:nth-child(1) > a
+
+
+#region_filter > div > div > div.area_list_wrap.add_button > ul > li:nth-child(2) > a
+a.complex_item_inner
+
+#articleListArea > div:nth-child(1) > div
+
+div.item_innt
+
+/html/body/div[2]/div/section/div[2]/div[2]/div[1]/div/div/div/div[3]/ul/li[1]/a
+
+#articleListArea > div:nth-child(2) > div
+
+
+
+//*[@id="region_filter"]/div/div/div[3]/ul/li[1]/a
+
+//*[@id="region_filter"]/div/div/div[3]/ul/li[2]/a
+
+//article/div[1]/div/div[{0}]/div[{1}]
+
+//article/div/div/div[3]/ul/li[1]/a
+
+
+
+//article/div[1]/div/div[n]/div[m]
+
+//article/div/div/div[3]/ul/li[i]/a
+
+//*[@id="region_filter"]/div/a/span[4]
+
+/html/body/div[2]/div/section/div[2]/div[2]/div[1]/div/div/a/span[4]
+
+for i in range(1, 5):
+    pead_path = '//article/div/div/div[3]/ul/li[1]/a'.format(i)
+
+#마우스 오버 코드 act = ActionChains(dr) 
+pead = dr.find_element_by_xpath(pead_path)
+ act.move_to_element(pead).perform()
+ time.sleep(1)
+
+출처: https://charimlab.tistory.com/entry/ep01웹크롤링-14-셀레니움-크롤링-반복문for문-range-with-파이썬 [챠마랩 : 챠림의마케팅연구소]
+
+from selenium.webdriver import ActionChains
+
+출처: https://charimlab.tistory.com/entry/ep01웹크롤링-14-셀레니움-크롤링-반복문for문-range-with-파이썬 [챠마랩 : 챠림의마케팅연구소]
+
+//*[@id="region_filter"]/div/div/div[3]/ul/li[1]/a
+
+
+//*[@id="region_filter"]/div/div/div[3]/ul/li[1]/a
+
+//*[@id="articleListArea"]/div[1]/div
+
+
+이름 : #articleListArea > div:nth-child(1) > div > a > div.item_title > span
+
+#articleListArea > div.item.is-selected > div > a > div.item_title
+
+#ct > div.map_wrap > div.detail_panel > div > div.detail_contents_inner > div.detail_fixed > div.main_info_area > div.info_title_wrap > h4 > strong
+
+div.item_title
+
+strong.info_title_name
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h4/strong
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]
+
+#ct > div.map_wrap > div.detail_panel > div > button
+
+#ct > div.map_wrap > div.detail_panel > div > div.detail_contents_inner > div.detail_fixed > div.main_info_area
+
+#ct > div.map_wrap > div.detail_panel > div > div.detail_contents_inner > div.detail_fixed > div.main_info_area > div.info_title_wrap > h4 > strong
+
+#header > div.header_common > div > div.area_search > form > fieldset > div > input
+
+#header > div.header_common > div
+
+#queryInputHeader#queryInputHeader
+
+a.item_link
+
+//*[@id="ct"]/div[2]/div[1]/div[2]/div/div/div[1]/div/a
+
+//*[@id="articleListArea"]/div[1]/div
+
+//*[@id="complexOverviewList"]/div[2]/div[1]/div[3]/div/label
+
+boxes = browser.find_elements_by_css_selector("div.main_info_area")
+for box in boxes:
+    title = box.find_element_by_css_selector("strong.info_title_name")
+    print(title.text)
+
+
+//*[@id="complexOverviewList"]/div[2]/div[1]/div[3]/div/label
+
+//*[@id="articleListArea"]/div[1]/div
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]/span[1]
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]
+
+#ct > div.map_wrap > div.detail_panel > div > div.detail_contents_inner > div.detail_fixed > div.main_info_area > div.info_article_price
+
+#ct > div.map_wrap > div.detail_panel > div > div.detail_contents_inner > div.detail_fixed > div.main_info_area > div.info_article_price > span.type
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[5]/span[1]
+
+#ct > div.map_wrap > div.detail_panel > div > div.detail_contents_inner > div.detail_fixed > div.main_info_area > div.info_article_feature > span:nth-child(1)
+
+//*[@id="region_filter"]/div/div/div[3]/ul/li[1]/a
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h4
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h4
+
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h4
+
+//*[@id="detailContents1"]/div[1]/table/tbody/tr[1]/td
+
+
+//*[@id="detailContents1"]/div[1]/table/tbody/tr[2]/td
+
+browser.find_element_by_css_selector("div.item_inner").click()
+
+//*[@id="tabArea"]/button
+
+//*[@id="detailContents1"]/div[1]/table/tbody/tr[3]/td[1]
+
+//*[@id="detailTab4"]
+
+//*[@id="detailContents5"]/div/div[1]/div[2]/div[2]
+
+//*[@id="detailContents5"]/div/div[1]/div[2]/div[2]/div[1]/text()
+
+//*[@id="detailContents5"]/div/div[1]/div[2]/div[2]/div[1]
+
+//*[@id="detailContents5"]/div/div[1]/div[1]
+
+//*[@id="detailContents5"]/div/div[1]/div[1]/h5
+
+//*[@id="detailTab4"]/span
+
+//*[@id="detailTab4"]
+
+//*[@id="detailContents5"]/div/div[1]/div[2]/div[2]
+
+a#detailTab4.tab_item
+
+//*[@id="tabArea"]/button
+
+//*[@id="detailContents1"]/div[1]/table/tbody/tr[3]/td[1]
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[5]/span[1]
+//*[@id="ct"]/div[2]/div[2]/div/div[2]
+
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]
+
+
+url="https://new.land.naver.com/complexes/1878?ms=37.33995,126.7427545,17&a=APT:ABYG:JGC&e=RETAIL&articleNo=2201277281"
+    browser.get(url)
+    boxes = browser.find_elements_by_css_selector("div.main_info_area")
+    for box in boxes:
+        title = box.find_element_by_css_selector("strong.info_title_name")
+        print(title.text)
+
+
+    actions = ActionChains(browser)
+    element = browser.find_element_by_xpath('//*[@id="detailTab4"]')
+    actions.move_to_element(element).click(on_element=element).perform()
+
+    time.sleep(5)
+    
+    apt_near_path = '//*[@id="detailContents5"]/div/div[1]/div[1]/h5'
+    apt_near = browser.find_element_by_xpath(apt_near_path)
+    near = apt_near.text
+    
+    time.sleep(3)
+
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]/span[1]
+
+//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]/span[2]
+
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from bs4 import BeautifulSoup
+from selenium.webdriver.common.keys import Keys
+import time
+browser = webdriver.Chrome()
+#반포자이 검색
+browser.get("https://land.naver.com")
+time.sleep(2)
+textbox = browser.find_element_by_css_selector("#queryInputHeader")
+textbox.send_keys("한남더힐")
+time.sleep(2)
+textbox.send_keys(Keys.RETURN) 
+time.sleep(2)
+#browser.find_element_by_xpath('//*[@id="ct"]/div[2]/div[1]/div[2]/div/div/div[1]/div/a').click()
+#time.sleep(2)
+#browser.find_element_by_xpath('//*[@id="complexOverviewList"]/div[2]/div[1]/div[3]/div/label').click()
+#time.sleep(2)
+browser.find_element_by_xpath('//*[@id="articleListArea"]/div[1]/div').click()
+time.sleep(2)
+boxes = browser.find_elements_by_css_selector("div.main_info_area")
+for box in boxes:
+    
+    price = box.find_element_by_xpath('//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]').text
+    title = box.find_element_by_css_selector("strong.info_title_name").text
+    feature = box.find_element_by_css_selector('span:nth-child(1)').text
+    print(title, price, feature)
+
+//*[@id="detailContents1"]/div[1]/table/tbody/tr[4]/td[1]    
+
+
+#browser.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+
+columns = ['이름', '분류', '가격', '방향', '매물특징', '평수', '층수']
+pd_data = pd.DataFrame(apt_data, columns=columns)
+print(pd_data)
+
+dr.find_element_by_xpath('').location
+
+dr.execute_script("window.scrollTo(0, 479)")
+
+standard_logo = dr.find_element_by_xpath
+
+act = ActionChains(dr)
+
+act.move_to_element(standard_logo).move_by_offset(x, y).perform()
+//*[@id="detailContents1"]/div[4]/button
+//*[@id="detailContents1"]/div[4]/button
+df.transpose().plot(kind='bar',figsize=(20,15),fontsize=30)
+
+inventors.to_excel('inventors.xlsx')
+
+import pandas as pd
+df=pd.read_excel('d:\판다스 실습\실습데이터2.xlsx') 
+df
+
+import pandas as pd # 2020 설문조사에서 데이터 과학자들이 사용하는 프로그래밍 언어 
+df = pd.DataFrame({'lang':['Python', 'R', 'SQL', 'C', 'C++', 'Java', 'Javascript', 'Julia', 'Swift', 'Bash', "MATLAB", 'None', 'Other'], 'val':[15531, 4278, 7536, 3316, 3828, 3368, 2996, 263, 199, 1777, 2218, 207, 1946]})
+
+
+
+
+

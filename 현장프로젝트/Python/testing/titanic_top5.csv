@@ -1,0 +1,6 @@
+Name,Passenger Class,Sex,Age,No of Siblings or Spouses on Board,No of Parents or Children on Board,Ticket Number,Passenger Fare,Cabin,Port of Embarkation,Life Boat,Survived
+"Allen, Miss. Elisabeth Walton",First,Female,29.0,0.0,0.0,24160,211.3,B5,Southampton,2,Yes
+"Allison, Master. Hudson Trevor",First,Male,0.9,1.0,2.0,113781,151.6,C22 C26,Southampton,11,Yes
+"Allison, Miss. Helen Loraine",First,Female,2.0,1.0,2.0,113781,151.6,C22 C26,Southampton,,No
+"Allison, Mr. Hudson Joshua Creighton",First,Male,30.0,1.0,2.0,113781,151.6,C22 C26,Southampton,,No
+"Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",First,Female,25.0,1.0,2.0,113781,151.6,C22 C26,Southampton,,No

@@ -1,0 +1,79 @@
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from bs4 import BeautifulSoup
+import pandas as pd
+browser = webdriver.Chrome()
+#정왕동에서 시작
+browser.get("https://new.land.naver.com/complexes/113317?ms=37.3525,126.7279,16&a=APT:ABYG:JGC&e=RETAIL")
+
+
+import time
+#아래 팝업창 뜨게 하기(아래 세모버튼 누르기?) xpath 사용
+browser.find_element_by_xpath('//*[@id="region_filter"]/div/a/span[4]').click()
+time.sleep(3)
+
+apt_data=[]
+
+#순차적으로 아래있는것을 클릭하게 함
+for i in range(1, 6):  #range의 1 다음의 수(11)을 바꿔 몇번 반복할지 설정 할 수 있다.
+    pead_path = '//*[@id="region_filter"]/div/div/div[3]/ul/li[{0}]/a'.format(i)
+    pead = browser.find_element_by_xpath(pead_path).click()
+    time.sleep(3)
+    
+    #왼쪽에 있는첫번째것을 클릭
+    browser.find_element_by_css_selector("div.item_inner").click()
+    time.sleep(2)
+    #browser.find_element_by_xpath('//*[@id="detailContents1"]/div[4]/button').click()
+    #time.sleep(2)
+    
+    #광고가 뜨면 아파트 이름이 인식이 안되므로 try except 문 사용
+    try:
+        #아파트 이름
+        apt_name_path = '//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h4/strong'
+        apt_name = browser.find_element_by_xpath(apt_name_path)
+        name = apt_name.text
+        #매매, 전세, 월세 구분
+        apt_type_path = '//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]/span[1]'
+        apt_type = browser.find_element_by_xpath(apt_type_path)
+        typ = apt_type.text
+        #아파트 가격
+        apt_price_path = '//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[3]/span[2]'
+        apt_price = browser.find_element_by_xpath(apt_price_path)
+        price = apt_price.text
+        #아파트 방향
+        apt_way_path = '//*[@id="ct"]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[5]/span[1]'
+        apt_way = browser.find_element_by_xpath(apt_way_path)
+        way = apt_way.text
+        #관리비
+        apt_mange_path = '//*[@id="detailContents1"]/div[1]/table/tbody/tr[4]/td[1]'
+        apt_mange = browser.find_element_by_xpath(apt_mange_path)
+        mange = apt_mange.text
+        #매물특징
+        apt_feature_path = '//*[@id="detailContents1"]/div[1]/table/tbody/tr[1]/td'
+        apt_feature = browser.find_element_by_xpath(apt_feature_path)
+        feature = apt_feature.text
+        #평수클릭
+        browser.find_element_by_xpath('//*[@id="tabArea"]/button').click()
+        time.sleep(2)
+        apt_space_path = '//*[@id="detailContents1"]/div[1]/table/tbody/tr[2]/td'
+        apt_space = browser.find_element_by_xpath(apt_space_path)
+        space = apt_space.text
+        #층수
+        apt_floor_path = '//*[@id="detailContents1"]/div[1]/table/tbody/tr[3]/td[1]'
+        apt_floor = browser.find_element_by_xpath(apt_floor_path)
+        floor = apt_floor.text
+        #x버튼 누르기
+        browser.find_element_by_css_selector("div.detail_panel > div > button").click()
+        time.sleep(2)
+        #아래 팝업창 뜨게 하기(아래 세모버튼 누르기?) xpath 사용
+        browser.find_element_by_xpath('//*[@id="region_filter"]/div/a/span[4]').click()
+        time.sleep(2)
+        #list에 데이터 추가하기
+        apt_data.append([name, typ, price, way, mange, feature, space, floor])
+    #광고가 뜨면 바로 x버튼 누르고 아래 방향을 눌러 다음 아파트 매물정보 검색
+    except:
+        browser.find_element_by_css_selector("div.detail_panel > div > button").click()
+        time.sleep(2)
+        browser.find_element_by_xpath('//*[@id="region_filter"]/div/a/span[4]').click()
+        time.sleep(2)
+        
