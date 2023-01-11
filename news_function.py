@@ -49,7 +49,7 @@ def finace(start, end, page):
     page = np.arange(page) # 입력페이지 맞춰 범위 설정
     result_finance = [] # 저장할 빈 리스트
 
-    for i in date:
+    for i in tqdm(date):
         date = str(i).replace('-','')[0:8] # 날짜 문자열로 변경후 ex)20220110 처럼 변경
         url = url_finance + date # 주소 설정
         for k in page: # 페이지변경
