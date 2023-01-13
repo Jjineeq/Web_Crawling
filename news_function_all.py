@@ -46,8 +46,9 @@ def news_function(category, start, end, page):
 
     query = category
     header = {'User-Agent':'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'} 
-
+    
     date = pd.date_range(start,end)
+    
     news_all = []
     news_title = []
     page = np.arange(page)
@@ -57,7 +58,7 @@ def news_function(category, start, end, page):
             page_2 = (j - 1)*10 + 10
             url = 'https://search.naver.com/search.naver?where=news&query={}&sort=3&nso=so%3Ar%2Cp%3Afrom{}to{}&start={}'.format(query, date, date, page_2)
             res = requests.get(url, headers = header)
-            time.sleep(1.5) # 학교 기준 1.5초 집에서는 0초 가능
+            #time.sleep(1.5) # 학교 기준 1.5초 집에서는 0초 가능
             soup = bs(res.text, 'lxml')
             for title in soup.find_all('a', attrs={'class':'news_tit'}):
                 news_title.append([date, title['title']])
