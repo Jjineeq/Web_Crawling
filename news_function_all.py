@@ -1,15 +1,12 @@
 import requests 
-import lxml
 from bs4 import BeautifulSoup as bs
 from datetime import datetime
-import csv
 import pandas as pd
 import numpy as np
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from tqdm import tqdm
-import time
-import re
+
 
 
 
@@ -55,7 +52,7 @@ def news_function(category, start, end, page):
     for i in tqdm(date):
         date = str(i).replace('-','')[0:8]
         for j in list(page):
-            page_2 = (j - 1)*10 + 10
+            page_2 = (j - 1)*10 +10
             url = 'https://search.naver.com/search.naver?where=news&query={}&sort=3&nso=so%3Ar%2Cp%3Afrom{}to{}&start={}'.format(query, date, date, page_2)
             res = requests.get(url, headers = header)
             #time.sleep(1.5) # 학교 기준 1.5초 집에서는 0초 가능
