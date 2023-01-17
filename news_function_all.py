@@ -73,18 +73,11 @@ def news_function(category, start, end, page, header):
     return news_title
 
 
-
 def category_stock():
     """
     카테고리별로 2012-12-28일부터 현재까지 달의 마지막날 종가 지수를 가져옴.
 
     """
-    
-    category_dic = {'음식료품' : 'D0011005', '섬유의복' : 'D0011006', '종이목재' : 'D0011007', '화학' : 'D0011008', '의약품' : 'D0011009', '비금속광물' : 'D0011010', '철강금속' : 'D0011011', '기계' : 'D0011012',
-                '전기전자' : 'D0011013', '의료정밀' : 'D0011014', '운수장비' : 'D0011015', '유통업' : 'D0011016', '전기가스업' : 'D0011017', '건설업' : 'D0011018', '운수창고' : 'D0011019', '통신업' : 'D0011020', '금융업' : 'D0011021',
-                '은행' : 'D0011022', '증권' : 'D0011024', '보험' : 'D0011025', '서비스업' : 'D0011026'}
-    category = ['음식료품', '섬유의복', '종이목재', '화학', '의약품', '비금속광물', '철강금속', '기계', '전기전자', '의료정밀', '운수장비', 
-                '유통업', '전기가스업', '건설업', '운수창고', '통신업', '금융업', '은행', '증권', '보험', '서비스업']
 
     url = 'https://finance.daum.net/api/charts/'
     headers = {
@@ -99,20 +92,26 @@ def category_stock():
 
     result = pd.DataFrame()
 
-    for i in range(0,21):
-        url_k = url + category_dic[category[i]] + '/months?limit=200&adjusted=true'  # 카테고리별 월봉 차트의 url
-        headers['referer'] = headers['referer'] + category_dic[category[i]]
-        r = requests.get(url_k, headers=headers, params=params)
-        szContent = r.text
+    for i in range(0, 22):
+        try:
+            code = 'D00110' + str(i+5).zfill(2)
+            url_k = url + code + '/months?limit=200&adjusted=true'  # 카테고리별 월봉 차트의 url
+            headers['referer'] = headers['referer'] + code
 
-        str_list = []
-        list = json.loads(szContent)
-        for price in list["data"]: # 월봉 차트에 있는 모든 주가를 가져온다.
-            str_list.append(price["date"] + " : " + str(price["tradePrice"]).replace(".0", "")) 
-        str_list = pd.DataFrame(str_list)
-        result = pd.concat([result, str_list], axis=1)
-    result.columns = ['음식료품', '섬유의복', '종이목재', '화학', '의약품', '비금속광물', '철강금속', '기계', '전기전자', '의료정밀', '운수장비', 
-                '유통업', '전기가스업', '건설업', '운수창고', '통신업', '금융업', '은행', '증권', '보험', '서비스업']
+            #url_k = url + category_dic[category[i]] + '/months?limit=200&adjusted=true'  # 카테고리별 월봉 차트의 url
+            #headers['referer'] = headers['referer'] + category_dic[category[i]]
+            r = requests.get(url_k, headers=headers, params=params)
+            szContent = r.text
+
+            str_list = []
+            list = json.loads(szContent)
+            for price in list["data"]: # 월봉 차트에 있는 모든 주가를 가져온다.
+                str_list.append(price["date"] + " : " + str(price["tradePrice"]).replace(".0", "")) 
+            str_list = pd.DataFrame(str_list)
+            result = pd.concat([result, str_list], axis=1)
+        except json.decoder.JSONDecodeError as err:
+            print(code+' 업종 없음')
+    result.columns = ['음식료품', '섬유의복', '종이목재', '화학', '의약품', '비금속광물', '철강금속', '기계', '전기전자', '의료정밀', '운수장비', '유통업', '전기가스업', '건설업', '운수창고', '통신업', '금융업', '은행', '증권', '보험', '서비스업']
     return result
 
 
@@ -273,18 +272,20 @@ def weight_cal(news_score, weights):
         if (news_score_i >= 0.6) & (weights_i >= 0.2) : # news가 매우 긍정, 포트폴리오도 강한 가중치
             total_weight = news_score_i*0.25 + weights_i
         
-        if (news_score_i >= 0.55) & (weights_i >= 0.1) & (weights_i <0.2) : # news가 매우 긍정, 포트폴리오는 약한 가중치
+        if (news_score_i >= 0.55) & (weights_i >= 0.1) & (weights_i <0.2) : # news가 긍정, 포트폴리오는 약한 가중치
             total_weight = news_score_i * 0.15 + weights_i
         
-        # if (news_score_i >= 0.55) & (weights_i >= 0.1) : # news가 긍정, 포트폴리오는 보통 가중치
-        #     total_weight = news_score_i * 0.2 + weights_i * 0.8
-        
+        if (news_score_i >= 0.5) & (weights_i >= 0.1) : # news가 긍정, 포트폴리오는 보통 가중치
+            total_weight = news_score_i * 0.2 + weights_i * 0.8
+
+        if (news_score_i <= 0.5) & (weights_i >= 0.1) : # news가 부정, 포트폴리오는 보통 가중치
+            total_weight = news_score_i * 0.25 + weights_i * 0.75
         
         if (news_score_i <= 0.45) & (weights_i >= 0.2) : # news가 부정, 포트폴리오는 강한 가중치
-            total_weight = weights_i - news_score_i*0.1
+            total_weight = weights_i - news_score_i*0.2
         
         if (news_score_i <= 0.45) & (weights_i <= 0.1) : # news가 부정, 포트폴리오는 약한 가중치
-            total_weight = weights_i - news_score_i*0.2
+            total_weight = weights_i - news_score_i*0.25
         
         if (news_score_i <= 0.4) & (weights_i <= 0.1) :  # news가 매우 부정, 포트폴리오는 약한 가중치
             total_weight = 0
